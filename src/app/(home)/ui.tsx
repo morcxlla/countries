@@ -1,9 +1,11 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { countries } from '@/data/countries'
 
 import { Country } from '@/types/country'
+import { siteConfig } from '@/config/site'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 
@@ -46,6 +48,22 @@ export function UI() {
           </li>
         ))}
       </ul>
+
+      <div className="right-4 text-right bottom-4 fixed font-mono text-xs">
+        <p>
+          <Link className="underline underline-offset-2" href={siteConfig.src}>
+            Source Code
+          </Link>
+        </p>
+        <p>
+          <Link
+            className="underline underline-offset-2"
+            href={`${siteConfig.src}/issues/new`}
+          >
+            Report issue
+          </Link>
+        </p>
+      </div>
     </main>
   )
 }
