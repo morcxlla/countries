@@ -1,7 +1,18 @@
 import '@/styles/globals.css'
+import { Metadata } from 'next'
+
+import { siteConfig } from '@/config/site'
 import { fontSans } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
+
+export const metadata: Metadata = {
+  title: {
+    template: `%s | ${siteConfig.name}`,
+    default: siteConfig.name,
+  },
+  description: siteConfig.description,
+}
 
 interface RootLayoutProps {
   children: React.ReactNode
