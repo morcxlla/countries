@@ -8,15 +8,20 @@ import { Country } from '@/types/country'
 import { siteConfig } from '@/config/site'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
 export function UI() {
   // State for search input and results
-  // Estado para la entrada de búsqueda y resultados
   const [searchTerm, setSearchTerm] = useState<string>('')
   const [results, setResults] = useState<Country[]>([])
 
   // Effect to update results based on search term
-  // Efecto para actualizar resultados basado en el término de búsqueda
   useEffect(() => {
     const filteredCountries = countries.filter((country) =>
       country.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -29,6 +34,26 @@ export function UI() {
       <h1 className="font-extrabold text-3xl tracking-tighter">
         Country Code Search
       </h1>
+      <div className="gap-2 grid grid-cols-3">
+        <Select>
+          <SelectTrigger disabled>
+            <SelectValue placeholder="Continent" />
+          </SelectTrigger>
+          <SelectContent>{/* */}</SelectContent>
+        </Select>
+        <Select>
+          <SelectTrigger disabled>
+            <SelectValue placeholder="Country" />
+          </SelectTrigger>
+          <SelectContent>{/* */}</SelectContent>
+        </Select>
+        <Select>
+          <SelectTrigger disabled>
+            <SelectValue placeholder="State" />
+          </SelectTrigger>
+          <SelectContent>{/* */}</SelectContent>
+        </Select>
+      </div>
       <Input
         type="text"
         placeholder="Enter country name"
@@ -48,7 +73,6 @@ export function UI() {
           </li>
         ))}
       </ul>
-
       <div className="right-4 text-right bottom-4 fixed font-mono text-xs">
         <p>
           <Link className="underline underline-offset-2" href={siteConfig.src}>
